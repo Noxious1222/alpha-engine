@@ -1,0 +1,49 @@
+# Alpha Engine Configuration
+
+# SEC Data Collection
+sec:
+  user_agent: "Alpha Engine Research (your.email@university.edu)"
+  rate_limit: 10
+  retry_attempts: 3
+  timeout: 30
+
+# Database Configuration
+database:
+  path: "alpha_engine.db"
+  backup_interval: 24
+  
+# Model Configuration
+model:
+  algorithm: "xgboost"
+  validation_split: 0.2
+  time_series_split: true
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    random_state: 42
+
+# Signal Generation
+signals:
+  min_probability: 0.6
+  holding_period_days: 10
+  max_signals_per_day: 20
+  min_trade_value: 10000
+  exclude_microcaps: true
+
+# Notifications
+notifications:
+  email:
+    enabled: true
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+  csv_export:
+    enabled: true
+    directory: "./signals"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "alpha_engine.log"
+  max_size_mb: 50
